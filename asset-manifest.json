@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/boredom-challenge/static/css/main.bab0b925.chunk.css",
+    "main.js": "/boredom-challenge/static/js/main.ffa52d9b.chunk.js",
+    "main.js.map": "/boredom-challenge/static/js/main.ffa52d9b.chunk.js.map",
+    "runtime-main.js": "/boredom-challenge/static/js/runtime-main.398907ee.js",
+    "runtime-main.js.map": "/boredom-challenge/static/js/runtime-main.398907ee.js.map",
+    "static/js/2.c01d175f.chunk.js": "/boredom-challenge/static/js/2.c01d175f.chunk.js",
+    "static/js/2.c01d175f.chunk.js.map": "/boredom-challenge/static/js/2.c01d175f.chunk.js.map",
+    "static/js/3.5f14cef7.chunk.js": "/boredom-challenge/static/js/3.5f14cef7.chunk.js",
+    "static/js/3.5f14cef7.chunk.js.map": "/boredom-challenge/static/js/3.5f14cef7.chunk.js.map",
+    "index.html": "/boredom-challenge/index.html",
+    "static/css/main.bab0b925.chunk.css.map": "/boredom-challenge/static/css/main.bab0b925.chunk.css.map",
+    "static/js/2.c01d175f.chunk.js.LICENSE.txt": "/boredom-challenge/static/js/2.c01d175f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.398907ee.js",
+    "static/js/2.c01d175f.chunk.js",
+    "static/css/main.bab0b925.chunk.css",
+    "static/js/main.ffa52d9b.chunk.js"
+  ]
+}
