@@ -5,11 +5,11 @@ const Nav = () => {
 
 return (
     <NavbarContainer>
-        <StyledLink className='logo' to='/boredom-challenge'>30-Day Boredom</StyledLink>
+        <StyledLink className='logo' to='/'>30-Day Boredom</StyledLink>
         <MenuLinks>
-            <StyledLink to='/boredom-challenge/challenges'>Challenges</StyledLink>
-            <StyledLink to='/boredom-challenge/motivation'>Motivation</StyledLink>
-            <StyledLink to='/boredom-challenge'>Home</StyledLink>
+            <StyledLink to='/challenges'>Challenges</StyledLink>
+            <StyledLink to='/motivation'>Motivation</StyledLink>
+            <StyledLink to='/'>Home</StyledLink>
         </MenuLinks>
     </NavbarContainer>
 )

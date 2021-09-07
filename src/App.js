@@ -11,9 +11,9 @@ function App() {
     <Router>
       <Nav/>
       <Switch>
-        <Route path='/boredom-challenge' exact component={Home}/>
-        <Route path='/boredom-challenge/motivation' component={Motivation}/>
-        <Route path='/boredom-challenge/challenges' component={Challenges}/>
+        <Route path='/' exact component={Home}/>
+        <Route path='/motivation' component={Motivation}/>
+        <Route path='/challenges' component={Challenges}/>
       </Switch>
     </Router>
     </>
