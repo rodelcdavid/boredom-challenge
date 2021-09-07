@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import {HashRouter as Router, Switch, Route} from 'react-router-dom'
 import Nav from './components/Nav';
 import Home from './components/Home';
 import Motivation from './components/Motivation';
@@ -11,9 +11,9 @@ function App() {
     <Router>
       <Nav/>
       <Switch>
-        <Route path='/' exact component={Home}/>
-        <Route path='/motivation' component={Motivation}/>
-        <Route path='/challenges' component={Challenges}/>
+        <Route path='/boredom-challenge' exact component={Home}/>
+        <Route path='/boredom-challenge/motivation' component={Motivation}/>
+        <Route path='/boredom-challenge/challenges' component={Challenges}/>
       </Switch>
     </Router>
     </>
