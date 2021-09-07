@@ -8,12 +8,12 @@ import Challenges from './components/Challenges';
 function App() {
   return (
     <>
-    <Router basename='/boredom-challenge'>
+    <Router>
       <Nav/>
       <Switch>
         <Route path='/boredom-challenge' exact component={Home}/>
         <Route path='/boredom-challenge/motivation' component={Motivation}/>
-        <Route path='/boredome-challenge/challenges' component={Challenges}/>
+        <Route path='/boredom-challenge/challenges' component={Challenges}/>
       </Switch>
     </Router>
     </>
