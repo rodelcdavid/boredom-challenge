@@ -8,7 +8,7 @@ import Challenges from './components/Challenges';
 function App() {
   return (
     <>
-    <Router basename='boredom-challenge/'>
+    <Router>
       <Nav/>
       <Switch>
         <Route path='/' exact component={Home}/>
