@@ -23,10 +23,10 @@ const NavbarContainer = styled.div`
     margin: 0 auto;
     padding: 1rem;
     
-    background-color: lightgreen;
+    background-color: lightblue;
 
     @media only screen and (min-width: 600px) {
-            background-color: lightblue;
+            
             flex-direction: row;
     }
 `
@@ -45,7 +45,7 @@ const StyledLink = styled(Link)`
     transition: all 150ms ease-in;
 
     &:hover {
-        color: white;
+        color: #F8F0DF;
     }
 
     &.logo {
