@@ -9,8 +9,8 @@ const Home = () => {
 
         <div style={{marginTop: '2rem'}}>
 
-        <StyledLink to='boredom-challenge/motivation'>Motivation</StyledLink>
-        <StyledLink to='boredom-challenge/challenges'>Start the challenge!</StyledLink>
+        <StyledLink to='/motivation'>Motivation</StyledLink>
+        <StyledLink to='/challenges'>Start the challenge!</StyledLink>
         </div>
         </MainWrapper>
     )
