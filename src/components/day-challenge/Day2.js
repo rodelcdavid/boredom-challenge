@@ -1,5 +1,3 @@
-
-
 const Day2 = () => {
     return (
         <>
@@ -8,6 +6,5 @@ const Day2 = () => {
         </>
     )
 }
-
 
 export default Day2

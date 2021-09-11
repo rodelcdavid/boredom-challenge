@@ -4,8 +4,7 @@ import Nav from './components/Nav';
 import Home from './components/Home';
 import Motivation from './components/Motivation';
 import Challenges from './components/Challenges';
-import Day1 from './components/Day1';
-import Day2 from './components/Day2';
+import DayChallenge from './components/day-challenge/DayChallenge';
 
 function App() {
 
@@ -16,9 +15,10 @@ function App() {
       <Switch>
         <Route path='/' exact component={Home}/>
         <Route path='/motivation' component={Motivation}/>
-        <Route path='/challenges' component={Challenges}/>
+        <Route path='/challenges' exact component={Challenges}/>
 
-        <Route path='/day1' component={Day1}/>
+        <Route path='/challenges/:day' component={DayChallenge}/>
+        {/* <Route path='/day2' component={Days.Day2}/> */}
       </Switch>
     </Router>
     </>
