@@ -1,13 +1,14 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 import { useState } from "react";
+import StatusContext from "../context/Status";
 
 const Challenges = () => {
 
     // const defaultDayStatus = Array(30);
-const defaultDayStatus = ['failed'].concat(Array(29).fill('done'));
+// const defaultDayStatus = ['failed'].concat(Array(29).fill('done'));
 
-const [dayStatus, setDayStatus] = useState(defaultDayStatus);
+// const [dayStatus, setDayStatus] = useState(defaultDayStatus);
 
 // const history = useHistory();
 // const doSomething = () => {
@@ -40,7 +41,7 @@ const [dayStatus, setDayStatus] = useState(defaultDayStatus);
 
 
 
-    const DaysArray = () => {
+    const DaysArray = ({dayStatus}) => {
         const daysArray = []
         for (let i=1; i<=30; i++) {
             daysArray.push(<Challenge
@@ -54,11 +55,23 @@ const [dayStatus, setDayStatus] = useState(defaultDayStatus);
         return daysArray
     }
 
+
+    // const resetStorage = () => {
+    //     localStorage.dayStatus = JSON.stringify([])
+    // }
     return (
         <>
         <h1 style={{textAlign: "center", marginTop: "2rem"}}>Challenges</h1>
         <ChallengeGrid>
-            <DaysArray/>
+        <StatusContext.Consumer>
+            {({dayStatus}) => (
+                <>
+            <DaysArray dayStatus = {dayStatus}/>
+            {/* <button onClick = {resetStorage}>Reset</button> */}
+            </>
+            )}
+            
+        </StatusContext.Consumer>
         </ChallengeGrid>
         </>
     )

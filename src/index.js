@@ -5,10 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import GlobalStyle from './utils/GlobalStyles';
 
+
 ReactDOM.render(
   <React.StrictMode>
   <GlobalStyle/>
-    <App />
+   
+      <App />
+  
   </React.StrictMode>,
   document.getElementById('root')
 );
