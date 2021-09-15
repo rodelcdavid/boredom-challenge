@@ -1,32 +1,77 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 import { useState } from "react";
+import StatusContext from "../context/Status";
 
 const Challenges = () => {
 
+    // const defaultDayStatus = Array(30);
+// const defaultDayStatus = ['failed'].concat(Array(29).fill('done'));
 
-const dayStatus = ['current'].concat(Array(29).fill('locked'));
+// const [dayStatus, setDayStatus] = useState(defaultDayStatus);
 
-// const [dayStatus, setDayStatus] = useState(defaultDayStatus)
-    const generateDays = () => {
+// const history = useHistory();
+// const doSomething = () => {
+//     return (
+//         alert("Failed")
+//     )
+// }
+
+
+//     const handleOnClick = (e) => {
+//         console.log(e.target.getAttribute('day').substr(3));
+//         const index = Number(e.target.getAttribute('day').substr(3));
+//        if(e.target.innerHTML === 'Failed') {
+//            //setstate daystatus, currentprogress => depending on attribute 'day'
+//            //dayStatus[index] = 'failed'
+//            //send the state to the challenge page
+//        }
+//        if(e.target.innerHTML === 'Done') {
+//            //setstate daystatus, currentprogress
+//        }
+//         e.preventDefault(); //prevent transition
+//         doSomething();
+    
+//         // redirect after 1 second
+//         window.setTimeout(() => {
+//            history.push('/challenges');
+//         }, 1000)
+//     };
+
+
+
+
+    const DaysArray = ({dayStatus}) => {
         const daysArray = []
         for (let i=1; i<=30; i++) {
             daysArray.push(<Challenge
-                className='animate__animated animate__zoomIn'
+                className={`animate__animated animate__zoomIn ${dayStatus[i-1]}`}
                 delay={Math.random() * 1}
                 key={i}
-                status={dayStatus[i-1]}
+                // status={dayStatus[i-1]}
                 to={`/challenges/day${i}`}
                 >{i}</Challenge>)
         }
         return daysArray
     }
 
+
+    // const resetStorage = () => {
+    //     localStorage.dayStatus = JSON.stringify([])
+    // }
     return (
         <>
         <h1 style={{textAlign: "center", marginTop: "2rem"}}>Challenges</h1>
         <ChallengeGrid>
-            {generateDays()}
+        <StatusContext.Consumer>
+            {({dayStatus}) => (
+                <>
+            <DaysArray dayStatus = {dayStatus}/>
+            {/* <button onClick = {resetStorage}>Reset</button> */}
+            </>
+            )}
+            
+        </StatusContext.Consumer>
         </ChallengeGrid>
         </>
     )
@@ -40,6 +85,7 @@ const ChallengeGrid = styled.div`
     justify-content: center;
     align-items: center;
     padding: 1rem;
+    
 `
 
 
@@ -71,9 +117,40 @@ export const Challenge = styled(Link).attrs( props => ({
             case 'current':
                 return 'lightblue'
             default:
-                return 'lightsalmon'
+                return 'lightblue'
         }
     }};
+    position: relative;
+
+
+    &.done, &.failed {
+        pointer-events: none;
+       
+    }
+
+    .done&::after {
+        content: "";
+        background-image: url("https://cdn-icons-png.flaticon.com/512/190/190411.png");
+        background-size: 30px 30px;
+        position: absolute;
+        top: 11px;
+        left: 11px;
+        color: green;
+        width: 30px;
+        height: 30px;
+    }
+
+    .failed&::after {
+        content: "";
+        background-image: url("https://cdn-icons-png.flaticon.com/512/753/753345.png");
+        background-size: 30px 30px;
+        position: absolute;
+        top: 11px;
+        left: 11px;
+        color: green;
+        width: 30px;
+        height: 30px;
+    }
    
     &:hover {
         box-shadow: 0 0 10px darkgreen;

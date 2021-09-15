@@ -2,15 +2,47 @@ import {Challenge} from "../Challenges"
 import Day1 from "./Day1"
 import Day2 from "./Day2"
 import Day3 from "./Day3"
+import { useHistory } from "react-router"
+import StatusContext from "../../context/Status"
 
 const DayChallenge = ({match}) => {
-     
-    const StatusButton = () => {
+console.log(match.params);
+   
+// const history = useHistory();
+// const doSomething = () => {
+//     return (
+//         alert("Failed")
+//     )
+// }
+
+
+    // const handleOnClick = (e) => {
+    //     console.log(e.target.getAttribute('day').substr(3));
+    //     const index = Number(e.target.getAttribute('day').substr(3));
+    //    if(e.target.innerHTML === 'Failed') {
+    //        //setstate daystatus, currentprogress => depending on attribute 'day'
+    //        //dayStatus[index] = 'failed'
+    //        //send the state to the challenge page
+    //    }
+    //    if(e.target.innerHTML === 'Done') {
+    //        //setstate daystatus, currentprogress
+    //    }
+    //     // e.preventDefault(); //prevent transition
+    //     // doSomething();
+    
+    //     // // redirect after 1 second
+    //     // window.setTimeout(() => {
+    //     //    history.push('/challenges');
+    //     // }, 1000)
+    // };
+
+    const StatusButton = ({handleOnClick}) => {
+        console.log('click', handleOnClick);
         return (
             <div style={{display:'flex', justifyContent:'center'}}>
 
-            <Challenge to='/challenges'>Failed</Challenge>
-            <Challenge to='/challenges'>Done</Challenge>
+            <Challenge to='/challenges' onClick={handleOnClick} day={match.params.day}>Failed</Challenge>
+            <Challenge to='/challenges' onClick={handleOnClick} day={match.params.day}>Done</Challenge>
             </div>
 
         )
@@ -86,7 +118,11 @@ const DayChallenge = ({match}) => {
     return (
         <>
         <Day/>
-        <StatusButton/>
+        <StatusContext.Consumer>
+            {({handleOnClick}) => (
+            <StatusButton handleOnClick = {handleOnClick}/>
+            )}
+        </StatusContext.Consumer>
         </>
     ) 
 
