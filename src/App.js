@@ -12,10 +12,8 @@ import {useHistory} from 'react-router'
 function App() {
 
 
+  const savedStatus = JSON.parse(localStorage.getItem('dayStatus')) || [];
  
-    const savedStatus = JSON.parse(localStorage.getItem('dayStatus' || []))
- 
-
   const [dayStatus, setDayStatus] = useState(savedStatus);
 //   const history = useHistory();
 // const doSomething = () => {
@@ -23,6 +21,7 @@ function App() {
 //         alert("Failed")
 //     )
 // }
+
 
 
 
