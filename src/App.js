@@ -8,6 +8,7 @@ import DayChallenge from './components/day-challenge/DayChallenge';
 import StatusContext from './context/Status';
 import { useEffect, useState } from 'react';
 import {useHistory} from 'react-router'
+import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react/cjs/react.development';
 
 function App() {
 
@@ -25,11 +26,14 @@ function App() {
 
 
 
+
     const handleOnClick = (e) => {
-        console.log(e.target.getAttribute('day').substr(3));
-        const index = Number(e.target.getAttribute('day').substr(3));
+      // console.log('target', e.target);
+      //   console.log(e.target.getAttribute('day').substr(3));
+        
        if(e.target.innerHTML === 'Failed') {
            //setstate daystatus, currentprogress => depending on attribute 'day'
+           const index = Number(e.target.getAttribute('day').substr(3));
            dayStatus[index-1] = 'failed'
           localStorage.dayStatus = JSON.stringify(dayStatus)
            setDayStatus(dayStatus);
@@ -37,6 +41,7 @@ function App() {
            //send the state to the challenge page
        }
        if(e.target.innerHTML === 'Done') {
+        const index = Number(e.target.getAttribute('day').substr(3));
         dayStatus[index-1] = 'done'
         localStorage.dayStatus = JSON.stringify(dayStatus)
 
@@ -51,6 +56,11 @@ function App() {
         // window.setTimeout(() => {
         //    history.push('/challenges');
         // }, 1000)
+
+        if(e.target.innerHTML === 'Reset') {
+          localStorage.dayStatus = JSON.stringify([]); // or null
+          setDayStatus([]);
+        }
     };
 
 

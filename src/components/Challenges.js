@@ -58,16 +58,17 @@ const Challenges = () => {
 
     // const resetStorage = () => {
     //     localStorage.dayStatus = JSON.stringify([])
+    //     dayStatus = [];
     // }
     return (
         <>
         <h1 style={{textAlign: "center", marginTop: "2rem"}}>Challenges</h1>
         <ChallengeGrid>
         <StatusContext.Consumer>
-            {({dayStatus}) => (
-                <>
+            {({dayStatus, handleOnClick}) => (
+            <>
             <DaysArray dayStatus = {dayStatus}/>
-            {/* <button onClick = {resetStorage}>Reset</button> */}
+            <Challenge to='/challenges' onClick={handleOnClick}>Reset</Challenge>
             </>
             )}
             
