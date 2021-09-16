@@ -1,10 +1,12 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 import StatusContext from "../context/Status";
+import { useContext } from "react";
 
 const Challenges = () => {
+const {dayStatus, handleOnClickReset} = useContext(StatusContext)
 
-    const DaysArray = ({dayStatus}) => {
+    const DaysArray = () => {
         const daysArray = []
         for (let i=1; i<=30; i++) {
             daysArray.push(<Challenge
@@ -20,15 +22,11 @@ const Challenges = () => {
     return (
         <>
         <h1 style={{textAlign: "center", marginTop: "2rem"}}>Challenges</h1>
-        <ChallengeGrid>
-        <StatusContext.Consumer>
-            {({dayStatus, handleOnClickReset}) => (
+        <ChallengeGrid>            
             <>
-            <DaysArray dayStatus = {dayStatus}/>
+            <DaysArray/>
             <button onClick={handleOnClickReset}>Reset</button>
             </>
-            )}
-        </StatusContext.Consumer>
         </ChallengeGrid>
         </>
     )
