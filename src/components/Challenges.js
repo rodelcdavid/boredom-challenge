@@ -1,45 +1,8 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
-import { useState } from "react";
 import StatusContext from "../context/Status";
 
 const Challenges = () => {
-
-    // const defaultDayStatus = Array(30);
-// const defaultDayStatus = ['failed'].concat(Array(29).fill('done'));
-
-// const [dayStatus, setDayStatus] = useState(defaultDayStatus);
-
-// const history = useHistory();
-// const doSomething = () => {
-//     return (
-//         alert("Failed")
-//     )
-// }
-
-
-//     const handleOnClick = (e) => {
-//         console.log(e.target.getAttribute('day').substr(3));
-//         const index = Number(e.target.getAttribute('day').substr(3));
-//        if(e.target.innerHTML === 'Failed') {
-//            //setstate daystatus, currentprogress => depending on attribute 'day'
-//            //dayStatus[index] = 'failed'
-//            //send the state to the challenge page
-//        }
-//        if(e.target.innerHTML === 'Done') {
-//            //setstate daystatus, currentprogress
-//        }
-//         e.preventDefault(); //prevent transition
-//         doSomething();
-    
-//         // redirect after 1 second
-//         window.setTimeout(() => {
-//            history.push('/challenges');
-//         }, 1000)
-//     };
-
-
-
 
     const DaysArray = ({dayStatus}) => {
         const daysArray = []
@@ -48,30 +11,23 @@ const Challenges = () => {
                 className={`animate__animated animate__zoomIn ${dayStatus[i-1]}`}
                 delay={Math.random() * 1}
                 key={i}
-                // status={dayStatus[i-1]}
                 to={`/challenges/day${i}`}
                 >{i}</Challenge>)
-        }
+        }    
         return daysArray
     }
 
-
-    // const resetStorage = () => {
-    //     localStorage.dayStatus = JSON.stringify([])
-    //     dayStatus = [];
-    // }
     return (
         <>
         <h1 style={{textAlign: "center", marginTop: "2rem"}}>Challenges</h1>
         <ChallengeGrid>
         <StatusContext.Consumer>
-            {({dayStatus, handleOnClick}) => (
+            {({dayStatus, handleOnClickReset}) => (
             <>
             <DaysArray dayStatus = {dayStatus}/>
-            <Challenge to='/challenges' onClick={handleOnClick}>Reset</Challenge>
+            <button onClick={handleOnClickReset}>Reset</button>
             </>
             )}
-            
         </StatusContext.Consumer>
         </ChallengeGrid>
         </>
@@ -129,6 +85,7 @@ export const Challenge = styled(Link).attrs( props => ({
        
     }
 
+    /* TODO: refactor if statement */
     .done&::after {
         content: "";
         background-image: url("https://cdn-icons-png.flaticon.com/512/190/190411.png");
@@ -151,6 +108,7 @@ export const Challenge = styled(Link).attrs( props => ({
         color: green;
         width: 30px;
         height: 30px;
+        
     }
    
     &:hover {
