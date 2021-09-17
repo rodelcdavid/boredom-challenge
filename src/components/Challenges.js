@@ -5,7 +5,7 @@ import { useContext } from "react";
 
 const Challenges = () => {
 const {dayStatus, handleOnClickReset} = useContext(StatusContext)
-const {progress, handleOnClickStart} = useContext(ProgressContext)
+const {currentDayProgress, handleOnClickStart} = useContext(ProgressContext)
 
     const DaysArray = () => {
         const daysArray = []
@@ -21,11 +21,11 @@ const {progress, handleOnClickStart} = useContext(ProgressContext)
     }
 
 
-    if (progress > 0) {
+    if (currentDayProgress > 0) {
         return (
             <>
             <h1 style={{textAlign: "center", marginTop: "2rem"}}>Challenges</h1>
-            <p style= {{textAlign:'center'}}>Current Day: {progress}/30</p>
+            <p style= {{textAlign:'center'}}>Current Day: {currentDayProgress}/30</p>
             <ChallengeGrid>            
             
                 <DaysArray/>
