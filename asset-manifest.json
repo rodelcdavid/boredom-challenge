@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/boredom-challenge/static/css/main.bab0b925.chunk.css",
-    "main.js": "/boredom-challenge/static/js/main.5b46726a.chunk.js",
-    "main.js.map": "/boredom-challenge/static/js/main.5b46726a.chunk.js.map",
+    "main.js": "/boredom-challenge/static/js/main.dd63e8e2.chunk.js",
+    "main.js.map": "/boredom-challenge/static/js/main.dd63e8e2.chunk.js.map",
     "runtime-main.js": "/boredom-challenge/static/js/runtime-main.538d8afe.js",
     "runtime-main.js.map": "/boredom-challenge/static/js/runtime-main.538d8afe.js.map",
     "static/js/2.b5114c9f.chunk.js": "/boredom-challenge/static/js/2.b5114c9f.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.538d8afe.js",
     "static/js/2.b5114c9f.chunk.js",
     "static/css/main.bab0b925.chunk.css",
-    "static/js/main.5b46726a.chunk.js"
+    "static/js/main.dd63e8e2.chunk.js"
   ]
 }
