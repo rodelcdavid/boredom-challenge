@@ -19,6 +19,7 @@ function App() {
 //componentdidmount
 useEffect(() => {
   const date = new Date()
+  console.log(date);
   const currentDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
   const startingDateString = JSON.parse(localStorage.getItem('startingDate'))
   const startingDate = new Date(startingDateString);
@@ -55,7 +56,7 @@ useEffect(() => {
     }
 
     const handleOnClickStart = () => {
-      const date = new Date()
+      const date = new Date();
       const startingDate = new Date (date.getFullYear(), date.getMonth(), date.getDate())
       localStorage.startingDate = JSON.stringify(startingDate);
       setCurrentDayProgress(currentDayProgress+1);

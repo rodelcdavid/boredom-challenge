@@ -2,11 +2,14 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 import {StatusContext, ProgressContext } from "../context/Context";
 import { useContext } from "react";
+import { MainWrapper } from "./Home";
 
 const Challenges = () => {
 const {dayStatus, handleOnClickReset} = useContext(StatusContext)
 const {currentDayProgress, handleOnClickStart} = useContext(ProgressContext)
 
+
+//why is this always rerendering
     const DaysArray = () => {
         const daysArray = []
         for (let i=1; i<=30; i++) {
@@ -24,8 +27,10 @@ const {currentDayProgress, handleOnClickStart} = useContext(ProgressContext)
     if (currentDayProgress > 0) {
         return (
             <>
+       
             <h1 style={{textAlign: "center", marginTop: "2rem"}}>Challenges</h1>
             <p style= {{textAlign:'center'}}>Current Day: {currentDayProgress}/30</p>
+         
             <ChallengeGrid>            
             
                 <DaysArray/>
@@ -104,6 +109,7 @@ export const Challenge = styled(Link).attrs( props => ({
     .done&::after {
         content: "";
         background-image: url("https://cdn-icons-png.flaticon.com/512/190/190411.png");
+        /* background-image: url("https://cdn-icons-png.flaticon.com/512/2913/2913133.png"); //for locked*/
         background-size: 30px 30px;
         position: absolute;
         top: 11px;

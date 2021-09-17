@@ -2,11 +2,14 @@ import {Challenge} from "../Challenges"
 import Day1 from "./Day1"
 import Day2 from "./Day2"
 import Day3 from "./Day3"
-import {StatusContext} from "../../context/Context"
+import {ProgressContext, StatusContext} from "../../context/Context"
+import { useContext } from "react"
 
 const DayChallenge = ({match}) => {
 
-    const StatusButton = ({handleOnClickStatus}) => {
+    const {handleOnClickStatus} = useContext(StatusContext);
+
+    const StatusButton = () => {
         return (
             <div style={{display:'flex', justifyContent:'center'}}>
 
@@ -84,15 +87,11 @@ const DayChallenge = ({match}) => {
                 )
         }
     }
-
+ 
     return (
         <>
         <Day/>
-        <StatusContext.Consumer>
-            {({handleOnClickStatus}) => (
-            <StatusButton handleOnClickStatus = {handleOnClickStatus}/>
-            )}
-        </StatusContext.Consumer>
+        <StatusButton/>
         </>
     ) 
 
