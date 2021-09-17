@@ -5,15 +5,17 @@ import Home from './components/Home';
 import Motivation from './components/Motivation';
 import Challenges from './components/Challenges';
 import DayChallenge from './components/day-challenge/DayChallenge';
-import StatusContext from './context/Status';
+import {StatusContext, ProgressContext} from './context/Context';
 import { useEffect, useState } from 'react';
 
 function App() {
 
 
   const savedStatus = JSON.parse(localStorage.getItem('dayStatus')) || [];
- 
+  const savedProgress = JSON.parse(localStorage.getItem('progress')) || 0;
+
   const [dayStatus, setDayStatus] = useState(savedStatus);
+  const [progress, setProgress] = useState(savedProgress);
 
     const handleOnClickStatus = (e) => {
       const tempDayStatus = [...dayStatus]
@@ -27,19 +29,31 @@ function App() {
           tempDayStatus[index-1] = 'done'
           setDayStatus(tempDayStatus);
        }
+
+       const tempProgress = progress + 1;
+       setProgress(tempProgress);
     };
 
     const handleOnClickReset = () => {
         setDayStatus([]);
+        setProgress(0);
     }
+
+    const handleOnClickStart = () => {
+      setProgress(progress+1)
+    }
+
 
     useEffect(() => {
       localStorage.dayStatus = JSON.stringify(dayStatus);
-    }, [dayStatus])
+      localStorage.progress = JSON.stringify(progress);
+    }, [dayStatus, progress])
     
     
   return (
     <StatusContext.Provider value ={{dayStatus, handleOnClickStatus, handleOnClickReset}}>
+    <ProgressContext.Provider value = {{progress, handleOnClickStart}}>
+
     <Router>
       <Nav/>
       <Switch>
@@ -50,6 +64,7 @@ function App() {
         <Route path='/challenges/:day' component={DayChallenge}/>
       </Switch>
     </Router>
+    </ProgressContext.Provider>
     </StatusContext.Provider>
   );
 }

@@ -1,10 +1,11 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
-import StatusContext from "../context/Status";
+import {StatusContext, ProgressContext } from "../context/Context";
 import { useContext } from "react";
 
 const Challenges = () => {
 const {dayStatus, handleOnClickReset} = useContext(StatusContext)
+const {progress, handleOnClickStart} = useContext(ProgressContext)
 
     const DaysArray = () => {
         const daysArray = []
@@ -19,17 +20,33 @@ const {dayStatus, handleOnClickReset} = useContext(StatusContext)
         return daysArray
     }
 
-    return (
-        <>
-        <h1 style={{textAlign: "center", marginTop: "2rem"}}>Challenges</h1>
-        <ChallengeGrid>            
+
+    if (progress > 0) {
+        return (
             <>
-            <DaysArray/>
-            <button onClick={handleOnClickReset}>Reset</button>
+            <h1 style={{textAlign: "center", marginTop: "2rem"}}>Challenges</h1>
+            <p style= {{textAlign:'center'}}>Current Day: {progress}/30</p>
+            <ChallengeGrid>            
+            
+                <DaysArray/>
+                
+            </ChallengeGrid>
+            <button style={{display: 'block', margin: '0 auto', width: '100px'}} onClick={handleOnClickReset}>Reset</button>
             </>
-        </ChallengeGrid>
-        </>
-    )
+        )
+    } else {
+        return (
+            <div style = {{display:'flex', justifyContent:'center', alignItems:'center', height:'200px'}}>
+            <button onClick = {handleOnClickStart}>Start the Challenge</button>
+            </div>
+        )
+    }
+        
+        
+
+    
+
+    
 }
 
 const ChallengeGrid = styled.div`
