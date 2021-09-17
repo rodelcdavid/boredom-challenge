@@ -4,10 +4,10 @@ import { ProgressContext } from "../context/Context"
 import { useContext } from "react"
 
 const Home = () => {
-    const {progress} = useContext(ProgressContext);
+    const {currentDayProgress} = useContext(ProgressContext);
 
     const StartContinue = () => {
-        if (progress===0) {
+        if (currentDayProgress===0) {
             return (
                 <StyledLink to='/challenges'>Start the challenge!</StyledLink>
             )

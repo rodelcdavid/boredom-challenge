@@ -12,10 +12,26 @@ function App() {
 
 
   const savedStatus = JSON.parse(localStorage.getItem('dayStatus')) || [];
-  const savedProgress = JSON.parse(localStorage.getItem('progress')) || 0;
 
   const [dayStatus, setDayStatus] = useState(savedStatus);
-  const [progress, setProgress] = useState(savedProgress);
+  const [currentDayProgress, setCurrentDayProgress] = useState(0);
+
+//componentdidmount
+useEffect(() => {
+  const date = new Date()
+  const currentDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  const startingDateString = JSON.parse(localStorage.getItem('startingDate'))
+  const startingDate = new Date(startingDateString);
+ 
+
+  if (startingDateString === null) {
+    const tempProgress = 0;
+    setCurrentDayProgress(tempProgress);
+  } else {
+    const tempProgress = Math.ceil((currentDate - startingDate)/(1000 * 60 * 60 * 24) + 1);
+    setCurrentDayProgress(tempProgress);
+  }
+}, [])
 
     const handleOnClickStatus = (e) => {
       const tempDayStatus = [...dayStatus]
@@ -29,30 +45,32 @@ function App() {
           tempDayStatus[index-1] = 'done'
           setDayStatus(tempDayStatus);
        }
-
-       const tempProgress = progress + 1;
-       setProgress(tempProgress);
     };
 
     const handleOnClickReset = () => {
         setDayStatus([]);
-        setProgress(0);
+        
+       localStorage.removeItem('startingDate')
+       setCurrentDayProgress(0);
     }
 
     const handleOnClickStart = () => {
-      setProgress(progress+1)
+      const date = new Date()
+      const startingDate = new Date (date.getFullYear(), date.getMonth(), date.getDate())
+      localStorage.startingDate = JSON.stringify(startingDate);
+      setCurrentDayProgress(currentDayProgress+1);
     }
+
 
 
     useEffect(() => {
       localStorage.dayStatus = JSON.stringify(dayStatus);
-      localStorage.progress = JSON.stringify(progress);
-    }, [dayStatus, progress])
+    }, [dayStatus])
     
     
   return (
     <StatusContext.Provider value ={{dayStatus, handleOnClickStatus, handleOnClickReset}}>
-    <ProgressContext.Provider value = {{progress, handleOnClickStart}}>
+    <ProgressContext.Provider value = {{currentDayProgress, handleOnClickStart}}>
 
     <Router>
       <Nav/>
@@ -60,7 +78,6 @@ function App() {
         <Route path='/' exact component={Home}/>
         <Route path='/motivation' component={Motivation}/>
         <Route path='/challenges' exact component={Challenges}/>
-
         <Route path='/challenges/:day' component={DayChallenge}/>
       </Switch>
     </Router>
