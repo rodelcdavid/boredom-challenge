@@ -1,7 +1,23 @@
 import styled, { keyframes } from "styled-components"
 import { Link } from "react-router-dom"
+import { ProgressContext } from "../context/Context"
+import { useContext } from "react"
 
 const Home = () => {
+    const {progress} = useContext(ProgressContext);
+
+    const StartContinue = () => {
+        if (progress===0) {
+            return (
+                <StyledLink to='/challenges'>Start the challenge!</StyledLink>
+            )
+        } else {
+            return (
+                <StyledLink to='/challenges'>Continue the challenge!</StyledLink>
+            )
+        }
+    }
+
     return (
         <MainWrapper>
         <h1 style={{fontSize:'3rem'}}>Get your brain to focus more.</h1>
@@ -10,7 +26,7 @@ const Home = () => {
         <div style={{marginTop: '2rem'}}>
 
         <StyledLink to='/motivation'>Motivation</StyledLink>
-        <StyledLink to='/challenges'>Start the challenge!</StyledLink>
+        <StartContinue/>
         </div>
         </MainWrapper>
     )

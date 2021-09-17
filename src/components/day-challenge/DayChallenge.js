@@ -2,7 +2,7 @@ import {Challenge} from "../Challenges"
 import Day1 from "./Day1"
 import Day2 from "./Day2"
 import Day3 from "./Day3"
-import StatusContext from "../../context/Status"
+import {StatusContext} from "../../context/Context"
 
 const DayChallenge = ({match}) => {
 
@@ -79,7 +79,9 @@ const DayChallenge = ({match}) => {
             // case 'day30':
             //     return <Day30/>    
             default:
-                return "No Challenges Available Yet!"
+                return (
+                    <div style = {{textAlign:'center'}}>No Challenges Available Yet!</div>
+                )
         }
     }
 
