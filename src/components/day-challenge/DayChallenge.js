@@ -4,10 +4,12 @@ import Day2 from "./Day2"
 import Day3 from "./Day3"
 import {ProgressContext, StatusContext} from "../../context/Context"
 import { useContext } from "react"
+import { MainWrapper } from "../Home"
 
 const DayChallenge = ({match}) => {
 
     const {handleOnClickStatus} = useContext(StatusContext);
+    const {currentDayProgress} = useContext(ProgressContext)
 
     const StatusButton = () => {
         return (
@@ -87,13 +89,43 @@ const DayChallenge = ({match}) => {
                 )
         }
     }
- 
-    return (
-        <>
-        <Day/>
-        <StatusButton/>
-        </>
-    ) 
+   
+    const startingDateString = JSON.parse(localStorage.getItem('startingDate'))
+    const startingDate = new Date(startingDateString)
+    const dayIndex = Number(match.params.day.substr(3));
+
+    const addDays = (date, days) => {
+        const result = new Date(date);
+        result.setDate(result.getDate() + days);
+        const formattedDate = result.toString().slice(0,10) + "," + result.toString().slice(10,15);
+        return formattedDate;
+    }
+
+    const challengeDay = addDays(startingDate, dayIndex-1);
+
+    if (currentDayProgress < dayIndex ){
+        return (
+            <MainWrapper>
+            <h2>{`Day ${dayIndex}`}</h2>
+            <Day/>
+            <br/>
+            <h1>This Challenge is still locked</h1>
+            <p>Come back on <span style={{fontWeight:'bolder', color:'lightsalmon'}}>{challengeDay}</span> to do this challenge.</p>
+            </MainWrapper>
+        )
+      
+    }
+    else {
+        return (
+            <MainWrapper>
+            <h2>{`Day ${dayIndex}`}</h2>
+            <p>{challengeDay}</p>
+            <Day/>
+            <StatusButton/>
+            </MainWrapper>
+        ) 
+    }
+   
 
    
 }

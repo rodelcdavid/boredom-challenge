@@ -2,7 +2,6 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 import {StatusContext, ProgressContext } from "../context/Context";
 import { useContext } from "react";
-import { MainWrapper } from "./Home";
 
 const Challenges = () => {
 const {dayStatus, handleOnClickReset} = useContext(StatusContext)
@@ -129,8 +128,9 @@ export const Challenge = styled(Link).attrs( props => ({
         color: green;
         width: 30px;
         height: 30px;
-        
     }
+
+   
    
     &:hover {
         box-shadow: 0 0 10px darkgreen;
