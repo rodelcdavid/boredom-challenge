@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 
 function App() {
 
+  //move to context
   const defaultDayStatus = ['todo'].concat(Array(29).fill('locked'));
   const savedStatus = JSON.parse(localStorage.getItem('dayStatus')) || defaultDayStatus;
 
@@ -17,6 +18,7 @@ function App() {
   const [currentDayProgress, setCurrentDayProgress] = useState(0);
 
 //componentdidmount
+//move to challenges (when challenges mounted)
 useEffect(() => {
   const date = new Date()
   console.log(date);
@@ -24,7 +26,7 @@ useEffect(() => {
   // const currentDate = new Date(2021, 8, 25);
   const startingDateString = JSON.parse(localStorage.getItem('startingDate'))
   const startingDate = new Date(startingDateString);
- 
+
 
   if (startingDateString === null) {
     const tempProgress = 0;
@@ -48,6 +50,7 @@ useEffect(() => {
   }
 }, [])
 
+//move to DayChallenge
     const handleOnClickStatus = (e) => {
       const tempDayStatus = [...dayStatus]
       const index = Number(e.target.getAttribute('day').substr(3));
@@ -62,6 +65,8 @@ useEffect(() => {
        }
     };
 
+
+//move to challenges
     const handleOnClickReset = () => {
         setDayStatus(defaultDayStatus);
         
@@ -69,6 +74,7 @@ useEffect(() => {
        setCurrentDayProgress(0);
     }
 
+//move to challenges
     const handleOnClickStart = () => {
       const date = new Date();
       const startingDate = new Date (date.getFullYear(), date.getMonth(), date.getDate())
@@ -77,7 +83,7 @@ useEffect(() => {
     }
 
 
-
+//move to challenges
     useEffect(() => {
       localStorage.dayStatus = JSON.stringify(dayStatus);
     }, [dayStatus])

@@ -87,6 +87,8 @@ export const Challenge = styled(Link).attrs( props => ({
     border-radius: 10px;
     cursor: pointer;
     transition: all 150ms ease-in;
+
+    /* TODO: change this bg color */
     background-color: ${({status}) => {
         switch (status) {
             case 'failed':
