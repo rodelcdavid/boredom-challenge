@@ -22,13 +22,14 @@ const {currentDayProgress, handleOnClickStart} = useContext(ProgressContext)
         return daysArray
     }
 
-
+   const displayDayProgress = (currentDayProgress > 30) ? 30 : currentDayProgress;
+    
     if (currentDayProgress > 0) {
         return (
             <>
        
             <h1 style={{textAlign: "center", marginTop: "2rem"}}>Challenges</h1>
-            <p style= {{textAlign:'center'}}>Current Day: {currentDayProgress}/30</p>
+            <p style= {{textAlign:'center'}}>Current Day: {displayDayProgress}/30</p>
          
             <ChallengeGrid>            
             
@@ -80,7 +81,9 @@ export const Challenge = styled(Link).attrs( props => ({
     width: 50px;
     height: 50px;
     color: black;
+    font-weight: bolder;
     text-decoration: none;
+    border: solid 2px black;
     border-radius: 10px;
     cursor: pointer;
     transition: all 150ms ease-in;
@@ -108,14 +111,13 @@ export const Challenge = styled(Link).attrs( props => ({
     .done&::after {
         content: "";
         background-image: url("https://cdn-icons-png.flaticon.com/512/190/190411.png");
-        /* background-image: url("https://cdn-icons-png.flaticon.com/512/2913/2913133.png"); //for locked*/
         background-size: 30px 30px;
         position: absolute;
         top: 11px;
         left: 11px;
-        color: green;
         width: 30px;
         height: 30px;
+      
     }
 
     .failed&::after {
@@ -125,12 +127,20 @@ export const Challenge = styled(Link).attrs( props => ({
         position: absolute;
         top: 11px;
         left: 11px;
-        color: green;
         width: 30px;
         height: 30px;
     }
 
-   
+    .locked&::after{
+        content: "";
+        background-image: url("https://cdn-icons-png.flaticon.com/512/2913/2913133.png");
+        background-size: 12px 12px;
+        position: absolute;
+        top: 4px;
+        left: 34px;
+        width: 12px;
+        height: 12px;
+    }
    
     &:hover {
         box-shadow: 0 0 10px darkgreen;

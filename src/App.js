@@ -10,8 +10,8 @@ import { useEffect, useState } from 'react';
 
 function App() {
 
-
-  const savedStatus = JSON.parse(localStorage.getItem('dayStatus')) || [];
+  const defaultDayStatus = ['todo'].concat(Array(29).fill('locked'));
+  const savedStatus = JSON.parse(localStorage.getItem('dayStatus')) || defaultDayStatus;
 
   const [dayStatus, setDayStatus] = useState(savedStatus);
   const [currentDayProgress, setCurrentDayProgress] = useState(0);
@@ -21,6 +21,7 @@ useEffect(() => {
   const date = new Date()
   console.log(date);
   const currentDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  // const currentDate = new Date(2021, 8, 25);
   const startingDateString = JSON.parse(localStorage.getItem('startingDate'))
   const startingDate = new Date(startingDateString);
  
@@ -31,6 +32,19 @@ useEffect(() => {
   } else {
     const tempProgress = Math.ceil((currentDate - startingDate)/(1000 * 60 * 60 * 24) + 1);
     setCurrentDayProgress(tempProgress);
+
+ 
+    const savedStatus = JSON.parse(localStorage.getItem('dayStatus'))
+    const tempDayStatus = savedStatus.map((item, i)=>{
+        if (((i+1)<=tempProgress) && item!=='failed' && item!=='done') {
+          return "todo";
+        } else if ((i+1)>tempProgress) { // just to make sure if they go back in date it will lock future
+          return "locked";
+        } else {
+          return item;
+        }
+    })
+    setDayStatus(tempDayStatus);
   }
 }, [])
 
@@ -49,7 +63,7 @@ useEffect(() => {
     };
 
     const handleOnClickReset = () => {
-        setDayStatus([]);
+        setDayStatus(defaultDayStatus);
         
        localStorage.removeItem('startingDate')
        setCurrentDayProgress(0);
