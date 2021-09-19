@@ -9,8 +9,26 @@ import styled from "styled-components"
 
 const DayChallenge = ({match}) => {
 
-    const {dayStatus, handleOnClickStatus} = useContext(StatusContext);
+    const {dayStatus, setDayStatus} = useContext(StatusContext);
     const {currentDayProgress} = useContext(ProgressContext)
+
+
+    const handleOnClickStatus = (e) => {
+        const tempDayStatus = [...dayStatus]
+        const index = Number(e.target.getAttribute('day').substr(3));
+  
+         if(e.target.innerHTML === 'Failed') {
+            tempDayStatus[index-1] = 'failed'
+            setDayStatus(tempDayStatus);       
+         }
+         if(e.target.innerHTML === 'Done') {
+            tempDayStatus[index-1] = 'done'
+            setDayStatus(tempDayStatus);
+         }
+      };
+
+
+
 
     const StatusButton = () => {
 
