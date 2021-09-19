@@ -102,10 +102,10 @@ export const Challenge = styled(Link).attrs( props => ({
     position: relative;
 
 
-    &.done, &.failed {
+    /* &.done, &.failed {
         pointer-events: none;
        
-    }
+    } */
 
     /* TODO: refactor if statement */
     .done&::after {
@@ -134,12 +134,12 @@ export const Challenge = styled(Link).attrs( props => ({
     .locked&::after{
         content: "";
         background-image: url("https://cdn-icons-png.flaticon.com/512/2913/2913133.png");
-        background-size: 12px 12px;
-        position: absolute;
-        top: 4px;
-        left: 34px;
-        width: 12px;
-        height: 12px;
+        background-size: 20px 20px;
+    position: absolute;
+    top: -5px;
+    left: 35px;
+    width: 20px;
+    height: 20px;
     }
    
     &:hover {

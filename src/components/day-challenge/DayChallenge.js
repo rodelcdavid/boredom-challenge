@@ -1,22 +1,31 @@
-import {Challenge} from "../Challenges"
 import Day1 from "./Day1"
 import Day2 from "./Day2"
 import Day3 from "./Day3"
 import {ProgressContext, StatusContext} from "../../context/Context"
 import { useContext } from "react"
 import { MainWrapper } from "../Home"
+import { Link } from "react-router-dom"
+import styled from "styled-components"
 
 const DayChallenge = ({match}) => {
 
-    const {handleOnClickStatus} = useContext(StatusContext);
+    const {dayStatus, handleOnClickStatus} = useContext(StatusContext);
     const {currentDayProgress} = useContext(ProgressContext)
 
     const StatusButton = () => {
+
+        const isFinished = ((dayStatus[dayIndex-1]==='done') || ((dayStatus[dayIndex-1]==='failed'))) ? true: false;
+  
+        if ((currentDayProgress >= dayIndex) && isFinished) {
+            return (
+                <ChallengeLink to='/challenges'>Back to Challenges</ChallengeLink>
+            )
+        }
         return (
             <div style={{display:'flex', justifyContent:'center'}}>
 
-            <Challenge to='/challenges' onClick={handleOnClickStatus} day={match.params.day}>Failed</Challenge>
-            <Challenge to='/challenges' onClick={handleOnClickStatus} day={match.params.day}>Done</Challenge>
+            <ChallengeLink to='/challenges' onClick={handleOnClickStatus} day={match.params.day}>Failed</ChallengeLink>
+            <ChallengeLink to='/challenges' onClick={handleOnClickStatus} day={match.params.day}>Done</ChallengeLink>
             </div>
         )
     }
@@ -107,27 +116,36 @@ const DayChallenge = ({match}) => {
         return (
             <MainWrapper>
             <h2>{`Day ${dayIndex}`}</h2>
-            <Day/>
+            {/* <Day/> */}
             <br/>
-            <h1>This Challenge is still locked</h1>
+            <h1>This challenge is still locked.</h1>
             <p>Come back on <span style={{fontWeight:'bolder', color:'lightsalmon'}}>{challengeDay}</span> to do this challenge.</p>
             </MainWrapper>
         )
       
     }
-    else {
-        return (
-            <MainWrapper>
-            <h2>{`Day ${dayIndex}`}</h2>
-            <p>{challengeDay}</p>
-            <Day/>
-            <StatusButton/>
-            </MainWrapper>
+    
+    return (
+        <MainWrapper>
+        <h2>{`Day ${dayIndex}`}</h2>
+        <p>{challengeDay}</p>
+        <Day/>
+        <StatusButton/>
+        </MainWrapper>
         ) 
-    }
-   
-
    
 }
+
+const ChallengeLink = styled(Link)`
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+    color: black;
+    text-decoration: none;
+    background-color: lightblue;
+    padding: 0.5rem;
+    border-radius: 10px;
+   
+`
 
 export default DayChallenge
