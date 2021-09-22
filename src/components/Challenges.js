@@ -7,15 +7,13 @@ const Challenges = () => {
 const {dayStatus, setDayStatus, defaultDayStatus} = useContext(StatusContext)
 const {currentDayProgress, setCurrentDayProgress} = useContext(ProgressContext)
 
-
-
 //Challenges componentdidmount
 //TODO: solve the useffect warning without disabling eslint
 useEffect(() => {
    
     const date = new Date()
-    const currentDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-    // const currentDate = new Date(2021, 8, 25);
+    // const currentDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    const currentDate = new Date(2021, 8, 25);
     const startingDateString = JSON.parse(localStorage.getItem('startingDate'))
     const startingDate = new Date(startingDateString);
   
@@ -77,6 +75,8 @@ useEffect(() => {
         for (let i=1; i<=30; i++) {
             daysArray.push(<Challenge
                 className={`animate__animated animate__zoomIn ${dayStatus[i-1]}`}
+                currentdayprogress = {currentDayProgress}
+                index = {i}
                 delay={Math.random() * 1}
                 key={i}
                 to={`/challenges/day${i}`}
@@ -141,33 +141,24 @@ export const Challenge = styled(Link).attrs( props => ({
     color: black;
     font-weight: bolder;
     text-decoration: none;
-    border: solid 2px black;
+    /* border: solid 2px black; */
     border-radius: 10px;
     cursor: pointer;
     transition: all 150ms ease-in;
-
-    /* TODO: change this bg color */
-    background-color: ${({status}) => {
-        switch (status) {
-            case 'failed':
-                return 'red'
-            case 'done':
-                return 'lightgreen'
-            case 'current':
-                return 'lightblue'
-            default:
-                return 'lightblue'
+    background-color: lightblue;/* TODO: change this bg color */
+    position: relative;
+    border: ${({index, currentdayprogress})=>{
+        if ((index)===currentdayprogress){
+            return 'solid 4px green'
+        } else {
+            return 'solid 2px black'
         }
     }};
-    position: relative;
 
-
-    /* &.done, &.failed {
-        pointer-events: none;
-       
-    } */
-
-    /* TODO: refactor if statement */
+    &:hover {
+        box-shadow: 0 0 10px darkgreen;
+    }
+    
     .done&::after {
         content: "";
         background-image: url("https://cdn-icons-png.flaticon.com/512/190/190411.png");
@@ -195,17 +186,12 @@ export const Challenge = styled(Link).attrs( props => ({
         content: "";
         background-image: url("https://cdn-icons-png.flaticon.com/512/2913/2913133.png");
         background-size: 20px 20px;
-    position: absolute;
-    top: -5px;
-    left: 35px;
-    width: 20px;
-    height: 20px;
+        position: absolute;
+        top: -5px;
+        left: 35px;
+        width: 20px;
+        height: 20px;
     }
-   
-    &:hover {
-        box-shadow: 0 0 10px darkgreen;
-    }
-   
 `
 
 export default Challenges
