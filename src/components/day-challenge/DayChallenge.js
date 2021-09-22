@@ -138,6 +138,7 @@ const DayChallenge = ({match}) => {
             <br/>
             <h1>This challenge is still locked.</h1>
             <p>Come back on <span style={{fontWeight:'bolder', color:'lightsalmon'}}>{challengeDay}</span> to do this challenge.</p>
+            <ChallengeLink to='/challenges'>Back to Challenges</ChallengeLink>
             </MainWrapper>
         )
       
