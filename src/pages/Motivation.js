@@ -1,4 +1,5 @@
-import { MainWrapper } from "./Home"
+import { MainWrapper } from "../utils/MainWrapper"
+
 const Motivation = () => {
     return (
         <MainWrapper>

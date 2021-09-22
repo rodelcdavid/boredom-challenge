@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 import {StatusContext, ProgressContext } from "../context/Context";
-import { useContext, useEffect } from "react";
+import { useCallback, useContext, useEffect } from "react";
 
 const Challenges = () => {
 const {dayStatus, setDayStatus, defaultDayStatus} = useContext(StatusContext)
@@ -70,7 +70,7 @@ useEffect(() => {
 
 
 //why is this always rerendering
-    const DaysArray = () => {
+    const DaysArray = useCallback(() => {
         const daysArray = []
         for (let i=1; i<=30; i++) {
             daysArray.push(<Challenge
@@ -83,7 +83,7 @@ useEffect(() => {
                 >{i}</Challenge>)
         }    
         return daysArray
-    }
+    }, [currentDayProgress, dayStatus]);
 
    const displayDayProgress = (currentDayProgress > 30) ? 30 : currentDayProgress;
     

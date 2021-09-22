@@ -1,7 +1,8 @@
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
 import { Link } from "react-router-dom"
 import { ProgressContext } from "../context/Context"
 import { useContext } from "react"
+import { MainWrapper } from "../utils/MainWrapper"
 
 const Home = () => {
     const {currentDayProgress} = useContext(ProgressContext);
@@ -33,25 +34,9 @@ const Home = () => {
 
 }
 
-const fadeInContent = keyframes`
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-`
 
-export const MainWrapper = styled.div`
-    text-align: center;
-    padding: 2rem;
-    animation: 1s ${fadeInContent} ease-in;
 
-    /* & h1 {
-        width: 50%;
-        margin: 0 auto;
-    } */
-`
+
 
 const StyledLink = styled(Link)`
     display: block;
