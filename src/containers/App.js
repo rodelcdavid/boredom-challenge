@@ -4,7 +4,7 @@ import Nav from '../components/Nav';
 import Home from '../pages/Home';
 import Motivation from '../pages/Motivation';
 import DayChallenge from '../pages/DayChallenge';
-import Challenges from '../pages/Challenges';
+import Challenges from '../pages/Challenges/Challenges';
 import {StatusProvider, ProgressProvider} from '../context/Context';
 
 
