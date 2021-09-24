@@ -1,6 +1,8 @@
 import { StatusContext, ProgressContext } from "../../context/Context";
 import { useContext, useEffect } from "react";
 import ChallengeGrid from "./ChallengeGrid";
+import { MainWrapper } from "../../utils/MainWrapper";
+import styled from "styled-components";
 
 const Challenges = () => {
   const { dayStatus, setDayStatus, defaultDayStatus } =
@@ -13,7 +15,7 @@ const Challenges = () => {
   useEffect(() => {
     const date = new Date();
     // const currentDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-    const currentDate = new Date(2021, 8, 25);
+    const currentDate = new Date(2021, 8, 26);
     const startingDateString = JSON.parse(localStorage.getItem("startingDate"));
     const startingDate = new Date(startingDateString);
 
@@ -71,19 +73,16 @@ const Challenges = () => {
   if (currentDayProgress > 0) {
     return (
       <>
-        <h1 style={{ textAlign: "center", marginTop: "2rem" }}>Challenges</h1>
-        <p style={{ textAlign: "center" }}>
-          Current Day: {displayDayProgress}/30
-        </p>
+        <MainWrapper>
+          <h1 style={{ textAlign: "center" }}>Challenges</h1>
+          <p style={{ textAlign: "center" }}>
+            Current Day: {displayDayProgress}/30
+          </p>
+        </MainWrapper>
 
         <ChallengeGrid />
 
-        <button
-          style={{ display: "block", margin: "0 auto", width: "100px" }}
-          onClick={handleOnClickReset}
-        >
-          Reset
-        </button>
+        <ResetButton onClick={handleOnClickReset}>Reset</ResetButton>
       </>
     );
   } else {
@@ -94,12 +93,40 @@ const Challenges = () => {
           justifyContent: "center",
           alignItems: "center",
           height: "200px",
+          flexDirection: "column",
         }}
       >
-        <button onClick={handleOnClickStart}>Start the Challenge</button>
+        <h2>Ready to take on the challenges?</h2>
+        <StartButton onClick={handleOnClickStart}>
+          Start the Challenge
+        </StartButton>
       </div>
     );
   }
 };
+
+const ResetButton = styled.button`
+  display: block;
+  margin: 0 auto;
+  background-color: #fca311;
+  padding: 0.2rem 0.8rem;
+  width: 150px;
+  border: solid 2px #14213d;
+  border-radius: 10px;
+  font-weight: bolder;
+  cursor: pointer;
+`;
+
+const StartButton = styled.button`
+  display: block;
+  width: 500px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: #fca311;
+  border: solid 2px #14213d;
+  border-radius: 10px;
+  font-weight: bolder;
+  cursor: pointer;
+`;
 
 export default Challenges;

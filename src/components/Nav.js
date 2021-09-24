@@ -1,70 +1,64 @@
-import styled from "styled-components"
-import { Link } from "react-router-dom"
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
-
-return (
+  return (
     <NavbarContainer>
-        <StyledLink className='logo' to='/'>30-Day Boredom</StyledLink>
-        <MenuLinks>
-            <StyledLink to='/challenges'>Challenges</StyledLink>
-            <StyledLink to='/motivation'>Motivation</StyledLink>
-            <StyledLink to='/'>Home</StyledLink>
-        </MenuLinks>
+      <StyledLink className="logo" to="/">
+        30-Day Boredom
+      </StyledLink>
+      <MenuLinks>
+        <StyledLink to="/challenges">Challenges</StyledLink>
+        <StyledLink to="/motivation">Motivation</StyledLink>
+        <StyledLink to="/">Home</StyledLink>
+      </MenuLinks>
     </NavbarContainer>
-)
-}
+  );
+};
 
 const NavbarContainer = styled.div`
-   
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
-    padding: 1rem;
-    
-    background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: #14213d;
 
-    @media only screen and (min-width: 600px) {
-            
-            flex-direction: row;
-    }
-`
+  @media only screen and (min-width: 600px) {
+    flex-direction: row;
+  }
+`;
 
 const MenuLinks = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const StyledLink = styled(Link)`
-    color: black;
-    text-decoration: none;
-    padding: 0 1rem;
-    font-size: 1rem;
-    transition: all 150ms ease-in;
+  color: #e5e5e5;
+  text-decoration: none;
+  padding: 0 1rem;
+  font-size: 1rem;
+  transition: all 150ms ease-in;
 
-    &:hover {
-        color: #F8F0DF;
-    }
+  &:hover {
+    color: #fca311;
+  }
 
+  &.logo {
+    font-size: 2rem;
+  }
+
+  &.logo:hover {
+    color: #e5e5e5;
+  }
+
+  @media only screen and (min-width: 600px) {
     &.logo {
-        font-size: 2rem;
-        
+      margin-right: auto;
     }
+  }
+`;
 
-    &.logo:hover {
-        color:black;
-    }
-
-
-    @media only screen and (min-width: 600px) {
-        &.logo {
-        margin-right: auto;
-    }
-    }
-
-  
-`
-
-export default Nav
+export default Nav;
