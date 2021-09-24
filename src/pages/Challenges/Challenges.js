@@ -119,7 +119,7 @@ const ResetButton = styled.button`
 
 const StartButton = styled.button`
   display: block;
-  width: 500px;
+  width: 200px;
   margin: 0 auto;
   padding: 1rem;
   background-color: #fca311;
