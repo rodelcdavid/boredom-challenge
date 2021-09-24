@@ -5,31 +5,29 @@ import { useContext } from "react";
 import { MainWrapper } from "../utils/MainWrapper";
 
 const Home = () => {
-  //fix starting and continue on refresh
-  const { currentDayProgress } = useContext(ProgressContext);
+  // //fix starting and continue on refresh
+  // const { currentDayProgress } = useContext(ProgressContext);
 
-  const StartContinue = () => {
-    if (currentDayProgress === 0) {
-      return <StyledLink to="/challenges">Start the challenge!</StyledLink>;
-    } else {
-      return <StyledLink to="/challenges">Continue the challenge!</StyledLink>;
-    }
-  };
+  // const StartContinue = () => {
+  //   if (currentDayProgress === 0) {
+  //     return <StyledLink to="/challenges">Start the challenge!</StyledLink>;
+  //   } else {
+  //     return <StyledLink to="/challenges">Continue the challenge!</StyledLink>;
+  //   }
+  // };
 
   return (
     <MainWrapper>
-      <h1 style={{ fontSize: "3rem", marginTop: "3rem" }}>
-        Get your brain
-        <br /> to focus more than ever.
+      <h1 style={{ fontSize: "3rem", lineHeight: "1.2" }}>
+        Get your brain to focus more than ever.
       </h1>
-      <p style={{ fontSize: "1.5rem", marginTop: "1.5rem" }}>
-        Take back your attention span
-        <br /> by embracing boredom!
+      <p style={{ fontSize: "1.5rem" }}>
+        Take back your attention span by embracing boredom!
       </p>
 
-      <div style={{ marginTop: "2rem" }}>
+      <div style={{ margin: "2rem auto" }}>
         <StyledLink to="/motivation">Motivation</StyledLink>
-        <StartContinue />
+        <StyledLink to="/challenges">Challenges</StyledLink>
       </div>
     </MainWrapper>
   );
