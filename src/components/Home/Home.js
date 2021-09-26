@@ -15,10 +15,10 @@ const Home = () => {
 
   return (
     <MainWrapper>
-      <h1 style={{ fontSize: "3rem", lineHeight: "1.2" }}>
+      <h1 style={{ fontSize: "2rem", lineHeight: "1.2" }}>
         Get your brain to focus more than ever.
       </h1>
-      <p style={{ fontSize: "1.5rem" }}>
+      <p style={{ fontSize: "1rem" }}>
         Take back your attention span by embracing boredom!
       </p>
 

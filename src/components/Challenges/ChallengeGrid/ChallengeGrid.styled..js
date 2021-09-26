@@ -5,7 +5,7 @@ export const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 50px);
   grid-template-rows: repeat(6, 50px);
-  grid-gap: 15px;
+  grid-gap: 6px;
   justify-content: center;
   align-items: center;
   padding: 1rem;
@@ -19,9 +19,9 @@ export const DayLink = styled(Link).attrs((props) => ({
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 55px;
-  height: 55px;
-
+  width: 50px;
+  height: 50px;
+  font-size: 0.8rem;
   color: black;
   font-weight: bolder;
   text-decoration: none;
@@ -47,8 +47,8 @@ export const DayLink = styled(Link).attrs((props) => ({
     background-image: url("https://cdn-icons-png.flaticon.com/512/190/190411.png");
     background-size: 30px 30px;
     position: absolute;
-    top: 13px;
-    left: 13px;
+    top: 9px;
+    left: 9px;
     width: 30px;
     height: 30px;
   }
@@ -58,8 +58,8 @@ export const DayLink = styled(Link).attrs((props) => ({
     background-image: url("https://cdn-icons-png.flaticon.com/512/753/753345.png");
     background-size: 30px 30px;
     position: absolute;
-    top: 13px;
-    left: 13px;
+    top: 9px;
+    left: 9px;
     width: 30px;
     height: 30px;
   }
@@ -70,7 +70,7 @@ export const DayLink = styled(Link).attrs((props) => ({
     background-size: 20px 20px;
     position: absolute;
     top: -5px;
-    left: 39px;
+    left: 32px;
     width: 20px;
     height: 20px;
   }

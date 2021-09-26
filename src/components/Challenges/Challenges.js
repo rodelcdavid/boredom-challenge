@@ -72,14 +72,13 @@ const Challenges = () => {
   const displayDayProgress = currentDayProgress > 30 ? 30 : currentDayProgress;
   if (currentDayProgress > 0) {
     return (
-      <>
-        <MainWrapper>
-          <h1>Challenges</h1>
-          <p>Current Day: {displayDayProgress}/30</p>
-        </MainWrapper>
+      <MainWrapper>
+        <h2>Challenges</h2>
+        <p>Current Day: {displayDayProgress}/30</p>
+
         <ChallengeGrid />
         <ResetButton onClick={handleOnClickReset}>Reset</ResetButton>
-      </>
+      </MainWrapper>
     );
   } else {
     return (

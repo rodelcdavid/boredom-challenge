@@ -1,10 +1,11 @@
 import styled, { createGlobalStyle, keyframes } from "styled-components";
+// outline: 1px solid #f00 !important;
 
 const GlobalStyle = createGlobalStyle`
-
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -26,7 +27,7 @@ const fadeInContent = keyframes`
 
 export const MainWrapper = styled.div`
   text-align: center;
-  padding: 0.8rem 2rem;
+  padding: 0.8rem;
   color: black;
   animation: 1s ${fadeInContent} ease-in;
 
