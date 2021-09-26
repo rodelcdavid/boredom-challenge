@@ -1,40 +1,7 @@
-import { useCallback, useContext } from "react";
-import { ProgressContext, StatusContext } from "../../context/Context";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
-const ChallengeGrid = () => {
-  const { currentDayProgress } = useContext(ProgressContext);
-  const { dayStatus } = useContext(StatusContext);
-
-  const DaysArray = useCallback(() => {
-    const daysArray = [];
-    for (let i = 1; i <= 30; i++) {
-      daysArray.push(
-        <ChallengeLink
-          className={`animate__animated animate__zoomIn ${dayStatus[i - 1]}`}
-          currentdayprogress={currentDayProgress}
-          index={i}
-          delay={Math.random() * 1}
-          key={i}
-          to={`/challenges/day${i}`}
-        >
-          {i}
-        </ChallengeLink>
-      );
-    }
-    return daysArray;
-  }, [currentDayProgress, dayStatus]);
-
-  return (
-    <GridWrapper>
-      <DaysArray />
-    </GridWrapper>
-  );
-};
-export default ChallengeGrid;
-
-const GridWrapper = styled.div`
+export const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 50px);
   grid-template-rows: repeat(6, 50px);
@@ -44,7 +11,7 @@ const GridWrapper = styled.div`
   padding: 1rem;
 `;
 
-export const ChallengeLink = styled(Link).attrs((props) => ({
+export const DayLink = styled(Link).attrs((props) => ({
   style: {
     animationDelay: `${props.delay}s`,
   },

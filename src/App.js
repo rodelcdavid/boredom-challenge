@@ -1,5 +1,5 @@
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
-import Nav from "./components/shared/Nav";
+import Nav from "./components/shared/Nav/Nav";
 import { StatusProvider, ProgressProvider } from "./context/Context";
 import { Home, Motivation, Challenges, DayChallenge } from "./components";
 
