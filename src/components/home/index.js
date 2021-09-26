@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { ProgressContext } from "../context/Context";
-import { useContext } from "react";
-import { MainWrapper } from "../utils/MainWrapper";
+import { MainWrapper } from "../../utils/GlobalStyles";
 
 const Home = () => {
   // //fix starting and continue on refresh

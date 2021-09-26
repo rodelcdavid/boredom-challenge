@@ -1,11 +1,11 @@
-import Day1 from "../components/day-challenge/Day1";
-import Day2 from "../components/day-challenge/Day2";
-import Day3 from "../components/day-challenge/Day3";
-import { ProgressContext, StatusContext } from "../context/Context";
+import Day1 from "./Day1";
+import Day2 from "./Day2";
+import Day3 from "./Day3";
+import { ProgressContext, StatusContext } from "../../context/Context";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { MainWrapper } from "../utils/MainWrapper";
+import { MainWrapper } from "../../utils/GlobalStyles";
 
 const DayChallenge = ({ match }) => {
   const { dayStatus, setDayStatus } = useContext(StatusContext);
