@@ -3,7 +3,7 @@ import { MainWrapper } from "../../utils/GlobalStyles";
 const Motivation = () => {
   return (
     <MainWrapper>
-      <h1>Motivation</h1>
+      <h2>Motivation</h2>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, magni
         laboriosam quia molestiae obcaecati, id perferendis non, provident quo
