@@ -1,8 +1,9 @@
-import { StatusContext, ProgressContext } from "../../context/Context";
+import { ProgressContext, StatusContext } from "../../context/Context";
 import { useContext, useEffect } from "react";
 import ChallengeGrid from "./ChallengeGrid";
-import { MainWrapper } from "../../utils/MainWrapper";
-import styled from "styled-components";
+import { StartButton } from "./StartButton";
+import { ResetButton } from "./ResetButton";
+import { MainWrapper } from "../../utils/GlobalStyles";
 
 const Challenges = () => {
   const { dayStatus, setDayStatus, defaultDayStatus } =
@@ -74,59 +75,23 @@ const Challenges = () => {
     return (
       <>
         <MainWrapper>
-          <h1 style={{ textAlign: "center" }}>Challenges</h1>
-          <p style={{ textAlign: "center" }}>
-            Current Day: {displayDayProgress}/30
-          </p>
+          <h1>Challenges</h1>
+          <p>Current Day: {displayDayProgress}/30</p>
         </MainWrapper>
-
         <ChallengeGrid />
-
         <ResetButton onClick={handleOnClickReset}>Reset</ResetButton>
       </>
     );
   } else {
     return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "200px",
-          flexDirection: "column",
-        }}
-      >
+      <MainWrapper>
         <h2>Ready to take on the challenges?</h2>
         <StartButton onClick={handleOnClickStart}>
           Start the Challenge
         </StartButton>
-      </div>
+      </MainWrapper>
     );
   }
 };
-
-const ResetButton = styled.button`
-  display: block;
-  margin: 0 auto;
-  background-color: #fca311;
-  padding: 0.2rem 0.8rem;
-  width: 150px;
-  border: solid 2px #14213d;
-  border-radius: 10px;
-  font-weight: bolder;
-  cursor: pointer;
-`;
-
-const StartButton = styled.button`
-  display: block;
-  width: 200px;
-  margin: 0 auto;
-  padding: 1rem;
-  background-color: #fca311;
-  border: solid 2px #14213d;
-  border-radius: 10px;
-  font-weight: bolder;
-  cursor: pointer;
-`;
 
 export default Challenges;
