@@ -1,22 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const Nav = () => {
-  return (
-    <NavbarContainer>
-      <StyledLink className="logo" to="/">
-        30-Day Boredom
-      </StyledLink>
-      <MenuLinks>
-        <StyledLink to="/challenges">Challenges</StyledLink>
-        <StyledLink to="/motivation">Motivation</StyledLink>
-        <StyledLink to="/">Home</StyledLink>
-      </MenuLinks>
-    </NavbarContainer>
-  );
-};
-
-const NavbarContainer = styled.div`
+export const NavbarContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,13 +14,13 @@ const NavbarContainer = styled.div`
   }
 `;
 
-const MenuLinks = styled.div`
+export const MenuLinks = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-const StyledLink = styled(Link)`
+export const StyledLink = styled(Link)`
   color: #e5e5e5;
   text-decoration: none;
   padding: 0 1rem;
@@ -60,5 +45,3 @@ const StyledLink = styled(Link)`
     }
   }
 `;
-
-export default Nav;

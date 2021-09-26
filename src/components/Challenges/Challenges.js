@@ -1,9 +1,8 @@
 import { ProgressContext, StatusContext } from "../../context/Context";
 import { useContext, useEffect } from "react";
-import ChallengeGrid from "./ChallengeGrid";
-import { StartButton } from "./StartButton";
-import { ResetButton } from "./ResetButton";
+import ChallengeGrid from "./ChallengeGrid/ChallengeGrid";
 import { MainWrapper } from "../../utils/GlobalStyles";
+import { StartButton, ResetButton } from "./Challenges.styled";
 
 const Challenges = () => {
   const { dayStatus, setDayStatus, defaultDayStatus } =
