@@ -74,7 +74,9 @@ const Challenges = () => {
     return (
       <MainWrapper>
         <h2>Challenges</h2>
-        <p>Current Day: {displayDayProgress}/30</p>
+        <p style={{ fontSize: "0.8rem" }}>
+          Current Day: {displayDayProgress}/30
+        </p>
 
         <ChallengeGrid />
         <ResetButton onClick={handleOnClickReset}>Reset</ResetButton>
