@@ -1,14 +1,16 @@
 import Day1 from "./Days/Day1";
 import Day2 from "./Days/Day2";
 import Day3 from "./Days/Day3";
-import { ProgressContext, StatusContext } from "../../context/Context";
+import { StatusContext } from "../../context/Context";
 import { useContext } from "react";
 import { MainWrapper } from "../../utils/GlobalStyles";
 import { ChallengeLink } from "./DayChallenge.styled";
 
 const DayChallenge = ({ match }) => {
   const { dayStatus, setDayStatus } = useContext(StatusContext);
-  const { currentDayProgress } = useContext(ProgressContext);
+  const savedDayProgress = JSON.parse(
+    localStorage.getItem("currentDayProgress")
+  );
 
   const handleOnClickStatus = (e) => {
     const tempDayStatus = [...dayStatus];
@@ -30,11 +32,13 @@ const DayChallenge = ({ match }) => {
         ? true
         : false;
 
-    if (currentDayProgress >= dayIndex && isFinished) {
+    if (savedDayProgress >= dayIndex && isFinished) {
       return <ChallengeLink to="/challenges">Back to Challenges</ChallengeLink>;
     }
     return (
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div
+        style={{ display: "flex", justifyContent: "center", padding: "5px" }}
+      >
         <ChallengeLink
           to="/challenges"
           onClick={handleOnClickStatus}
@@ -137,21 +141,22 @@ const DayChallenge = ({ match }) => {
   };
 
   const challengeDay = addDays(startingDate, dayIndex - 1);
-
-  if (currentDayProgress < dayIndex) {
+  console.log("current", savedDayProgress);
+  if (savedDayProgress < dayIndex) {
     return (
       <MainWrapper>
         <h2>{`Day ${dayIndex}`}</h2>
         {/* <Day/> */}
         <br />
-        <h1>This challenge is still locked.</h1>
+        <h1>This day is still locked.</h1>
         <p>
           Come back on{" "}
-          <span style={{ fontWeight: "bolder", color: "lightsalmon" }}>
+          <span style={{ fontWeight: "bolder", color: "#fca311" }}>
             {challengeDay}
           </span>{" "}
-          to do this challenge.
+          to do another challenge.
         </p>
+        <br />
         <ChallengeLink to="/challenges">Back to Challenges</ChallengeLink>
       </MainWrapper>
     );
@@ -160,7 +165,7 @@ const DayChallenge = ({ match }) => {
   return (
     <MainWrapper>
       <h2>{`Day ${dayIndex}`}</h2>
-      <p>{challengeDay}</p>
+      <p style={{ color: "#fca311", fontWeight: "600" }}>{challengeDay}</p>
       <Day />
       <StatusButton />
     </MainWrapper>

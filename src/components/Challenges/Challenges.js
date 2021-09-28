@@ -12,10 +12,11 @@ const Challenges = () => {
 
   //Challenges componentdidmount
   //TODO: solve the useffect warning without disabling eslint
+  //turn this into custom hook
   useEffect(() => {
     const date = new Date();
     // const currentDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-    const currentDate = new Date(2021, 8, 26);
+    const currentDate = new Date(2021, 8, 28);
     const startingDateString = JSON.parse(localStorage.getItem("startingDate"));
     const startingDate = new Date(startingDateString);
 
@@ -53,6 +54,9 @@ const Challenges = () => {
   };
 
   //Start Challenge
+  // starting date state
+  // starting date and currentdayprogress in the same object
+  // const date = {start: (date), current: (date)}
   const handleOnClickStart = () => {
     const date = new Date();
     const startingDate = new Date(
@@ -65,17 +69,18 @@ const Challenges = () => {
   };
 
   //save to localstorage everytime daystatus change
+  //turn this into custom hook => useLocalStorage
   useEffect(() => {
     localStorage.dayStatus = JSON.stringify(dayStatus);
-  }, [dayStatus]);
+    localStorage.currentDayProgress = JSON.stringify(currentDayProgress);
+  }, [dayStatus, currentDayProgress]);
 
-  const displayDayProgress = currentDayProgress > 30 ? 30 : currentDayProgress;
   if (currentDayProgress > 0) {
     return (
       <MainWrapper>
         <h2>Challenges</h2>
         <p style={{ fontSize: "0.8rem" }}>
-          Current Day: {displayDayProgress}/30
+          Current Day: {currentDayProgress > 30 ? 30 : currentDayProgress}/30
         </p>
 
         <ChallengeGrid />
