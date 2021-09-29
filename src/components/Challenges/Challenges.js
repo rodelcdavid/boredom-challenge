@@ -1,8 +1,9 @@
 import { ProgressContext, StatusContext } from "../../context/Context";
-import { useContext, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import ChallengeGrid from "./ChallengeGrid/ChallengeGrid";
 import { MainWrapper } from "../../utils/GlobalStyles";
 import { StartButton, ResetButton } from "./Challenges.styled";
+import ResetModal from "./ResetModal/ResetModal";
 
 const Challenges = () => {
   const { dayStatus, setDayStatus, defaultDayStatus } =
@@ -10,24 +11,18 @@ const Challenges = () => {
   const { currentDayProgress, setCurrentDayProgress } =
     useContext(ProgressContext);
 
+  const [isOpen, setIsOpen] = useState(false);
+
   //Challenges componentdidmount
   //TODO: solve the useffect warning without disabling eslint
   //turn this into custom hook
   useEffect(() => {
-<<<<<<< Updated upstream
     const date = new Date();
     // const currentDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
     const currentDate = new Date(2021, 8, 28);
-=======
-    // const date = new Date();
-    // const currentDate = new Date(
-    //   date.getFullYear(),
-    //   date.getMonth(),
-    //   date.getDate()
-    // );
-    const currentDate = new Date(2021, 9, 30);
->>>>>>> Stashed changes
+
     const startingDateString = JSON.parse(localStorage.getItem("startingDate"));
+    console.log("start", startingDateString);
     const startingDate = new Date(startingDateString);
 
     if (startingDateString === null) {
@@ -61,6 +56,7 @@ const Challenges = () => {
     setDayStatus(defaultDayStatus);
     localStorage.removeItem("startingDate");
     setCurrentDayProgress(0);
+    setIsOpen(false);
   };
 
   //Start Challenge
@@ -114,7 +110,14 @@ const Challenges = () => {
         </p>
 
         <ChallengeGrid />
-        <ResetButton onClick={handleOnClickReset}>Reset</ResetButton>
+        <ResetButton onClick={() => setIsOpen(true)}>Reset</ResetButton>
+        <ResetModal
+          open={isOpen}
+          onClose={() => setIsOpen(false)}
+          onReset={handleOnClickReset}
+        >
+          Are you sure you want to reset your progress?
+        </ResetModal>
       </MainWrapper>
     );
   } else {

@@ -6,6 +6,7 @@ const ChallengeGrid = () => {
   const { currentDayProgress } = useContext(ProgressContext);
   const { dayStatus } = useContext(StatusContext);
 
+  //try to use map instead of for loop once you have the data for the daychallenges
   const DaysArray = useCallback(() => {
     const daysArray = [];
     for (let i = 1; i <= 30; i++) {
