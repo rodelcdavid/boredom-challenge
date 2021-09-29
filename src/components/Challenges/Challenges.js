@@ -17,13 +17,10 @@ const Challenges = () => {
   //TODO: solve the useffect warning without disabling eslint
   //turn this into custom hook
   useEffect(() => {
-    // const date = new Date();
-    // const currentDate = new Date(
-    //   date.getFullYear(),
-    //   date.getMonth(),
-    //   date.getDate()
-    // );
-    const currentDate = new Date(2021, 8, 30);
+    const date = new Date();
+    // const currentDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    const currentDate = new Date(2021, 8, 28);
+
     const startingDateString = JSON.parse(localStorage.getItem("startingDate"));
     console.log("start", startingDateString);
     const startingDate = new Date(startingDateString);
@@ -84,7 +81,27 @@ const Challenges = () => {
     localStorage.currentDayProgress = JSON.stringify(currentDayProgress);
   }, [dayStatus, currentDayProgress]);
 
-  if (currentDayProgress > 0) {
+  //congratulations
+  const totalFinish = dayStatus.filter((status) => {
+    return status === "failed" || status === "done";
+  });
+  console.log("total", totalFinish); //why is this rendering twice?
+
+  if (totalFinish.length === 30) {
+    return (
+      <>
+        <h1>Congratulations!</h1>
+        <ResetButton onClick={() => setIsOpen(true)}>Reset</ResetButton>
+        <ResetModal
+          open={isOpen}
+          onClose={() => setIsOpen(false)}
+          onReset={handleOnClickReset}
+        >
+          Are you sure you want to reset your progress?
+        </ResetModal>
+      </>
+    );
+  } else if (currentDayProgress > 0) {
     return (
       <MainWrapper>
         <h2>Challenges</h2>

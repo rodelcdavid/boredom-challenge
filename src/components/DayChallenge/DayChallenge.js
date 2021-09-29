@@ -33,7 +33,12 @@ const DayChallenge = ({ match }) => {
         : false;
 
     if (savedDayProgress >= dayIndex && isFinished) {
-      return <ChallengeLink to="/challenges">Back to Challenges</ChallengeLink>;
+      return (
+        <>
+          <h1>{dayStatus[dayIndex - 1]}</h1>
+          <ChallengeLink to="/challenges">Back to Challenges</ChallengeLink>;
+        </>
+      );
     }
     return (
       <div
