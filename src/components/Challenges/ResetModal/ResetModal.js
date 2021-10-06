@@ -6,7 +6,7 @@ export default function ResetModal({ open, children, onClose, onReset }) {
   return reactDom.createPortal(
     <>
       <ModalOverlay onClick={onClose} />
-      <ModalContainer>
+      <ModalContainer className={`animate__animated animate__fadeIn`}>
         <button onClick={onClose}>Close Modal</button>
         {children}
         <button onClick={onReset}>Reset</button>

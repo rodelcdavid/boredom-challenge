@@ -19,7 +19,7 @@ const Challenges = () => {
   useEffect(() => {
     const date = new Date();
     // const currentDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-    const currentDate = new Date(2021, 8, 28);
+    const currentDate = new Date(2021, 10, 5);
 
     const startingDateString = JSON.parse(localStorage.getItem("startingDate"));
     console.log("start", startingDateString);
@@ -113,7 +113,7 @@ const Challenges = () => {
         <ResetButton onClick={() => setIsOpen(true)}>Reset</ResetButton>
         <ResetModal
           open={isOpen}
-          onClose={() => setIsOpen(false)}
+          onClose={() => setIsOpen(false)} //TODO: set animation onclose
           onReset={handleOnClickReset}
         >
           Are you sure you want to reset your progress?
